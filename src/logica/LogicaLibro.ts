@@ -109,6 +109,7 @@ function abrirDrawerEditar(libro: Libro, index: number): void {
     const editorialInput = document.getElementById('mod_editorial') as HTMLInputElement;
     const autorInput = document.getElementById('mod_autor') as HTMLInputElement;
     const fechaInput = document.getElementById('mod_fecha') as HTMLInputElement;
+    const estadoInput = document.getElementById('mod_estado') as HTMLInputElement;
 
     codigoInput.value = libro.codigo;
     tipoSelect.value = libro.tipo;
@@ -117,6 +118,7 @@ function abrirDrawerEditar(libro: Libro, index: number): void {
     editorialInput.value = libro.editorial;
     autorInput.value = libro.autor;
     fechaInput.value = libro.añoPublicacion;
+    estadoInput.value = libro.estado ? "Disponible" : "No Disponible";
 
     // Manejar el evento de envío del formulario de edición
     const editarLibroForm = document.getElementById('modificar_libro_drawer');
@@ -131,7 +133,13 @@ function abrirDrawerEditar(libro: Libro, index: number): void {
             const editorial = editorialInput.value;
             const autor = autorInput.value;
             const fecha = fechaInput.value;
-            const libroActualizado = new Libro(codigo, categoria, editorial, nombre, autor, fecha, tipo, true);
+            var estado
+            if(estadoInput.value == "Disponible"){
+                estado = true;
+            }else{
+                estado = false;
+            }
+            const libroActualizado = new Libro(codigo, categoria, editorial, nombre, autor, fecha, tipo, estado);
             // Modificar el libro en la lista de libros
             modificarLibro(index, libroActualizado);
             // Aquí refrescamos la página después de abrir el drawer de edición

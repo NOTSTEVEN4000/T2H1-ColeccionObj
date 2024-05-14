@@ -15,7 +15,7 @@
 
 <body>
 
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-blue-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
@@ -69,13 +69,14 @@
     </nav>
 
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-52 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-52 h-screen pt-20 transition-transform -translate-x-full bg-white border-r 
+        border-gray-200 sm:translate-x-0 dark:bg-blue-800 dark:border-gray-700"
         aria-label="Sidebar">
-        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-blue-800">
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="index.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-solid fa-book"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Libros / Revistas</span>
                     </a>
@@ -84,7 +85,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="estudiante.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-regular fa-circle-user"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Estudiantes</span>
                     </a>
@@ -93,7 +94,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="prestamos.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-solid fa-p"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Prestamos</span>
                     </a>
@@ -102,7 +103,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="devoluciones.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-brands fa-dashcube"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Devoluciones</span>
                     </a>
@@ -161,6 +162,10 @@
                                             class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                             Fecha en que se devolvio
                                         </th>
+                                        <th scope="col"
+                                            class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                            Estado
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody id="bodyProductos"></tbody>
@@ -202,7 +207,7 @@
                         </div>
                         <div>
                             <label for="fechaentrega"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha en que devolvio</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha en que devolvió</label>
                             <input type="date" name="title" id="fechaentrega"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 required="">

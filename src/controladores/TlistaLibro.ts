@@ -40,53 +40,73 @@ export class TlistaLibro {
     private agregarDatosPredefinidos() {
         this.ListaLibroStorage = [
             {
-                codigo: "001",
-                categoria: "Literatura",
-                editorial: "Editorial A",
-                nombre: "Libro 1",
-                autor: "Autor 1",
-                añoPublicacion: "2005",
-                tipo: "Libro",
-                estado: true
-            },
-            {
-                codigo: "002",
-                categoria: "Erotico",
-                editorial: "Editorial B",
-                nombre: "Libro 2",
-                autor: "Autor 2",
-                añoPublicacion: "2010",
+                codigo: "RV001",
+                categoria: "Salud",
+                editorial: "Planeta",
+                nombre: "Harry Potter y la piedra filosofal",
+                autor: "J.K. Rowling",
+                añoPublicacion: "1997",
                 tipo: "Revista",
                 estado: true
             },
             {
-                codigo: "003",
-                categoria: "Informatica",
-                editorial: "Editorial C",
-                nombre: "Libro 3",
-                autor: "Autor 3",
-                añoPublicacion: "2015",
-                tipo: "Libro",
-                estado: true
-            },
-            {
-                codigo: "004",
-                categoria: "Salud",
-                editorial: "Editorial D",
-                nombre: "Libro 4",
-                autor: "Autor 4",
-                añoPublicacion: "2000",
-                tipo: "Libro",
-                estado: true
-            },
-            {
-                codigo: "005",
+                codigo: "LB001",
                 categoria: "Literatura",
-                editorial: "Editorial E",
-                nombre: "Libro 5",
-                autor: "Autor 5",
-                añoPublicacion: "2020",
+                editorial: "Destino",
+                nombre: "Cien años de soledad",
+                autor: "Gabriel García Márquez",
+                añoPublicacion: "1967",
                 tipo: "Libro",
+                estado: true
+            },
+            {
+                codigo: "LB002",
+                categoria: "Literatura",
+                editorial: "Vintage",
+                nombre: "1984",
+                autor: "George Orwell",
+                añoPublicacion: "1949",
+                tipo: "Libro",
+                estado: true
+            },
+            {
+                codigo: "RV002",
+                categoria: "Erotico",
+                editorial: "Plaza & Janés",
+                nombre: "Cincuenta sombras de Grey",
+                autor: "E.L. James",
+                añoPublicacion: "2011",
+                tipo: "Revista",
+                estado: true
+            },
+            {
+                codigo: "LB003",
+                categoria: "Informatica",
+                editorial: "Anaya Multimedia",
+                nombre: "Aprende Python en un fin de semana",
+                autor: "Daniel Green",
+                añoPublicacion: "2017",
+                tipo: "Libro",
+                estado: true
+            },
+            {
+                codigo: "LB004",
+                categoria: "Informatica",
+                editorial: "Salamandra",
+                nombre: "Arrugas",
+                autor: "Paco Roca",
+                añoPublicacion: "2007",
+                tipo: "Libro",
+                estado: true
+            },
+            {
+                codigo: "RV003",
+                categoria: "Erotico",
+                editorial: "Debolsillo",
+                nombre: "El juego de Ender",
+                autor: "Orson Scott Card",
+                añoPublicacion: "1985",
+                tipo: "Revista",
                 estado: true
             }
         ];

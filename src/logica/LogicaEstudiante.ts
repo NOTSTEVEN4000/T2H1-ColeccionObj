@@ -1,7 +1,6 @@
-// logicaLibro.ts
+// logicaEstudiante.ts
 import { TListaEstudiante } from "../controladores/TlistaEstudiante";
 import { Estudiante } from "../entidades/estudiante";
-import { Libro } from "../entidades/libro";
 
 const ListaEstudiante = new TListaEstudiante()
 
@@ -56,7 +55,7 @@ export function ListarEstudiantesDesdeLocalStorage(): void {
                 if (EditButton) {
                     EditButton.addEventListener('click', () => {
                         abrirDrawerEditar(estudiante, index);
-                        console.log("hola" + estudiante + index)
+                        console.log("Indice" + estudiante + index)
                     });
                 }
             });
@@ -71,8 +70,9 @@ function obtenerEstado(estado: boolean): string {
 
 ListarEstudiantesDesdeLocalStorage();
 
+
+///GUARDAR EL ESTUDIANTE//
 const guardarEstudianteBtn = document.getElementById('guardarEstudianteBtn');
-// Función para limpiar el formulario
 guardarEstudianteBtn!.addEventListener("click", () => {
     // Obtener los valores del formulario
     const cedula = (document.getElementById('cedula') as HTMLInputElement).value;
@@ -88,25 +88,27 @@ guardarEstudianteBtn!.addEventListener("click", () => {
 });
 
 
-// Función para abrir el cajón (drawer) para editar un libro
+// Función para abrir el cajón (drawer) para editar un Estudiante
 function abrirDrawerEditar(estudiante: Estudiante, index: number): void {
-    // Llenar los campos del formulario con la información del libro
+    // Llenar los campos del formulario con la información del estudiante
     const cedulaInput = document.getElementById('mod_cedula') as HTMLInputElement;
     const nombreInput = document.getElementById('mod_nombres') as HTMLSelectElement;
     const apellidoInput = document.getElementById('mod_apellidos') as HTMLInputElement;
     const sexoSelect = document.getElementById('mod_genero') as HTMLSelectElement;
     const fechanacimiento = document.getElementById('mod_fechanacimiento') as HTMLInputElement;
+    const estados = document.getElementById('mod_estado') as HTMLInputElement;
 
     cedulaInput.value = estudiante.cedula;
     nombreInput.value = estudiante.nombre;
     apellidoInput.value = estudiante.apellido;
     sexoSelect.value = estudiante.sexo;
     fechanacimiento.value = estudiante.fechaNacimiento;
-
+    estados.value = estudiante.estado ? "Activo" : "Sancionado";
+    console.log("Estadosss" + estados.value)
     // Manejar el evento de envío del formulario de edición
-    const editarLibroForm = document.getElementById('modificar_estudiante_drawer');
-    if (editarLibroForm) {
-        editarLibroForm.addEventListener('submit', (event) => {
+    const editarEstudianteForm = document.getElementById('modificar_estudiante_drawer');
+    if (editarEstudianteForm) {
+        editarEstudianteForm.addEventListener('submit', (event) => {
             event.preventDefault();
             // Obtener los valores del formulario de edición
             const cedula = cedulaInput.value;
@@ -114,16 +116,21 @@ function abrirDrawerEditar(estudiante: Estudiante, index: number): void {
             const apellido = apellidoInput.value;
             const sexo = sexoSelect.value;
             const fechaNacimiento = fechanacimiento.value;
-            const EstudianteActualizado = new Estudiante(cedula, nombre, apellido, sexo, fechaNacimiento, true);
-            // Modificar el libro en la lista de libros
-            modificarEstudiante(index, EstudianteActualizado);
-            // Aquí refrescamos la página después de abrir el drawer de edición
-            window.location.reload();
+            var estado
+            if(estados.value == "Activo"){
+                estado = true;
+            }else{
+                estado = false;
+            }
+            const EstudianteActualizado = new Estudiante(cedula, nombre, apellido, sexo, fechaNacimiento, estado);
+            modificarEstudiante(index, EstudianteActualizado);  
+             // Aquí refrescamos la página después de abrir el drawer de edición
+             window.location.reload();
         });
     }
 }
 
-// Función para manejar la actualización del libro
+// Función para manejar la actualización del Estudiante
 export function modificarEstudiante(index: number, estudianteActualizado: Estudiante): void {
     ListaEstudiante.Modificar(index, estudianteActualizado);
     ListarEstudiantesDesdeLocalStorage();

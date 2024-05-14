@@ -6,6 +6,7 @@ import { Devoluciones } from "../entidades/devoluciones";
 import { Estudiante } from "../entidades/estudiante";
 import { Libro } from "../entidades/libro";
 import Swal from 'sweetalert2';
+import { Prestamo } from "../entidades/prestamo";
 
 const ListaDevolucion = new TlistaDevoluciones();
 const ListaPrestamo = new TlistaPrestamos()
@@ -17,6 +18,7 @@ const cedula = document.querySelector("#estudiante") as HTMLInputElement;
 const codigo = document.querySelector("#libro") as HTMLInputElement;
 const fechainicio = document.querySelector("#fechaprestamo") as HTMLInputElement;
 const fechafin = document.querySelector("#fechaentrega") as HTMLInputElement;
+
 
 var indexLibro = 0;
 let bandera = false;
@@ -34,10 +36,12 @@ export function cargarcomboxEstudiante() {
             }
         });
         ListaEstudiante.ListaEstudianteStorage.forEach((estudiante) => {
-            const option = document.createElement("option");
-            option.value = JSON.stringify(estudiante);
-            option.textContent = `${estudiante.cedula}`;
-            selectCategoriaRevistas.appendChild(option);
+            if (estudiante.estado == true) {
+                const option = document.createElement("option");
+                option.value = JSON.stringify(estudiante);
+                option.textContent = `${estudiante.cedula}`;
+                selectCategoriaRevistas.appendChild(option);
+            }
         });
     });
 }
@@ -79,7 +83,6 @@ export function cargarcomboLibro(cedula: string) {
     });
 }
 
-
 ////////////////////////////////////////////////////////
 //////////////CRUD PARA LOS PRESTAMOS//////////////////
 //////////////////////////////////////////////////////
@@ -97,11 +100,18 @@ export function ListarDevolucionesDesdeLocalStorage(): void {
                         <td class="p-1 text-base font-medium text-gray-900 whitespace-nowrap dark:text-black">${devolucion.libro}</td>
                         <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-black">${devolucion.fechaPrestamo}</td>
                         <td class="p-4 text-base font-medium text-gray-900 dark:text-black" style="overflow-wrap: break-word;">${devolucion.fechaEntrega}</td>
+                        <td class="p-4 text-base font-medium text-gray-900 dark:text-black" style="overflow-wrap: break-word;">${obtenerEstado(devolucion.estado)}</td>
+
                     `;
                 bodyProductos.appendChild(row);
             });
         }
     }
+}
+
+// Función para obtener el estado en palabras
+function obtenerEstado(estado: boolean): string {
+    return estado ? 'Devuelto' : 'No devuelto';
 }
 
 ListarDevolucionesDesdeLocalStorage();
@@ -110,13 +120,10 @@ document
     .querySelector(".btn-guardar")!
     .addEventListener("click", () => Guardar());
 
-document
-    .querySelector(".btn-cerrar")!
-    .addEventListener("click", () => limpiarCampos());
 
 export function Guardar() {
     if (bandera == true) {
-        const aux = new Devoluciones(cedula.value, codigo.value, fechainicio.value, fechafin.value);
+        const aux = new Devoluciones(cedula.value, codigo.value, fechainicio.value, fechafin.value, true);
         ListaDevolucion.Modificar(posedit, aux);
         limpiarCampos();
         const body = document.querySelector("tbody")!;
@@ -132,13 +139,15 @@ export function Guardar() {
 export function insertarDevolucion() {
     const cedulaJSON = JSON.parse(cedula.value);
     const codigoJSON = JSON.parse(codigo.value);
+
     const op = new Devoluciones(
         cedulaJSON.cedula,
         codigoJSON.codigo,
         fechainicio.value,
-        fechafin.value
-
+        fechafin.value,
+        true
     );
+
     const aux = new Libro(
         codigoJSON.codigo,
         codigoJSON.categoria,
@@ -149,6 +158,7 @@ export function insertarDevolucion() {
         codigoJSON.tipo,
         codigoJSON.estado = true
     );
+
     const aux2 = new Estudiante(
         cedulaJSON.cedula,
         cedulaJSON.nombre,
@@ -158,6 +168,7 @@ export function insertarDevolucion() {
         cedulaJSON.estado = true
     );
 
+
     const indexEstudiante = ListaEstudiante.ListaEstudianteStorage.findIndex(
         (estudiante) => estudiante.cedula === aux2.cedula
     );
@@ -165,6 +176,7 @@ export function insertarDevolucion() {
     const estudiante = ListaEstudiante.ListaEstudianteStorage.find(
         (estudiante) => estudiante.cedula === aux2.cedula
     );
+
     const fechaInicio = new Date(fechainicio.value);
     const fechaFin = new Date(fechafin.value);
 
@@ -176,7 +188,7 @@ export function insertarDevolucion() {
             );
             estudiante.librosPrestados.splice(indexL, 1);
             ListaEstudiante.Modificar(indexEstudiante, estudiante);
-            
+
             // Mostrar mensaje de libro devuelto y estudiante sancionado
             Swal.fire({
                 icon: 'success',
@@ -190,10 +202,11 @@ export function insertarDevolucion() {
             const indexL = estudiante.librosPrestados.findIndex(
                 (libros) => libros.codigo === aux.codigo
             );
+
             estudiante.librosPrestados.splice(indexL, 1);
             ListaEstudiante.Modificar(indexEstudiante, estudiante);
-             // Mostrar mensaje de libro devuelto y estudiante sancionado
-             Swal.fire({
+            // Mostrar mensaje de libro devuelto y estudiante sancionado
+            Swal.fire({
                 icon: 'success',
                 title: 'Libro Devuelto',
                 text: 'El libro ha sido devuelto exitosamente.',

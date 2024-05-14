@@ -31,12 +31,10 @@ export function cargarcomboboxEstudiante() {
             indexEstudiante = selectCategoriaRevistas.selectedIndex - 1;
         });
         ListaEstudiante.ListaEstudianteStorage.forEach((estudiante) => {
-            if (estudiante.estado == true) {
-                const option = document.createElement("option");
+            const option = document.createElement("option");
                 option.value = JSON.stringify(estudiante);
                 option.textContent = `${estudiante.cedula}`;
                 selectCategoriaRevistas.appendChild(option);
-            }
 
         });
     });
@@ -98,7 +96,8 @@ document.querySelector(".btn-guardar")!.addEventListener("click", () => {
             cedula.value,
             codigo.value,
             fechainicio.value,
-            fechafin.value
+            fechafin.value,
+            true
         );
         ListaPrestamo.Modificar(posedit, aux);
         limpiarCampos();
@@ -121,7 +120,8 @@ export function insertarPrestamos() {
         cedulaJSON.cedula,
         codigoJSON.codigo,
         fechainicio.value,
-        fechafin.value
+        fechafin.value,
+        true
     );
 
     const auxLibro = new Libro(

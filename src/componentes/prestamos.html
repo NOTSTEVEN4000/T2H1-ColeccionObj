@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-blue-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
@@ -68,13 +68,14 @@
     </nav>
 
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-52 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-52 h-screen pt-20 transition-transform -translate-x-full bg-white border-r 
+        border-gray-200 sm:translate-x-0 dark:bg-blue-800 dark:border-gray-700"
         aria-label="Sidebar">
-        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-blue-800">
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="index.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-solid fa-book"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Libros / Revistas</span>
                     </a>
@@ -83,7 +84,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="estudiante.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-regular fa-circle-user"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Estudiantes</span>
                     </a>
@@ -92,7 +93,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="prestamos.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-solid fa-p"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Prestamos</span>
                     </a>
@@ -101,7 +102,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="devoluciones.html"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group">
                         <i class="fa-brands fa-dashcube"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Devoluciones</span>
                     </a>
@@ -143,6 +144,8 @@
                                 class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
                                 <!-- Agrega el estilo overflow-y: auto; y max-height: 500px; para habilitar el desplazamiento vertical -->
                                 <thead class="bg-gray-100 dark:bg-gray-700">
+                                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-black text-center mb-2 mt-2">Historial de prestamos
+                                    </h1>
                                     <tr>
                                         <th scope="col"
                                             class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
